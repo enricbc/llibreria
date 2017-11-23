@@ -6,8 +6,6 @@
 class autor
 {
   private $nom;
-  private $cognom;
-  private $pais;
 
   function __construct()
   {
@@ -18,11 +16,9 @@ class autor
       call_user_func_array(array($this,$f),$args);
     }
   }
-  function __construct1($nom,$cognom,$pais)
+  function __construct1($nom)
   {
     $this->$nom=$nom;
-    $this->$cognom=$cognom;
-    $this->$pais=$pais;
   }
   function __construct2()
   {
@@ -33,7 +29,7 @@ class autor
     echo "__construct con 3 params llamado: " . $a1 . "," . $a2 . "," . $a3;
   }
 */
-  function inserirAutor($nom,$cognom,$pais){
+  function inserirGenere($nom){
     $conexion = new mysqli();
     @$conexion->connect($server, $username, $password, $database);
 
@@ -41,25 +37,25 @@ class autor
       die('Error de conexión: ' . $conexion->connect_error);
     }
 
-    $sql ="INSERT INTO autor (nom, cognom, nacio-pais) VALUES ($this->nom, $this->cognom, $this->pais)";//Genero sentencia SQL
+    $sql ="INSERT INTO genere (nom) VALUES ($this->nom)";//Genero sentencia SQL
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
 
     if ($conexion->query($sql)===TRUE) {//Comprobem que s'ha introduit satisfactoriament
-      echo "S'ha inserit l'autor correctament";
+      echo "S'ha inserit el genere correctament";
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
-  function getAutors(){
+  function getGeneres(){
     $conexion = new mysqli();
     @$conexion->connect($server, $username, $password, $database);
 
     if ($conexion->connect_error){
       die('Error de conexión: ' . $conexion->connect_error);
     }
-    $sql="SELECT * from autor"; //Importem els usuaris
+    $sql="SELECT * from genere"; //Importem els usuaris
 
     $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
 
@@ -70,7 +66,7 @@ class autor
       }
     }
   }
-  function esborrarAutors(){
+  function esborrarGeneres(){
 
   }
 }
