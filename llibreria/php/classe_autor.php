@@ -14,15 +14,17 @@ class autor
     $args = func_get_args();
     $num = func_num_args();
     $f='__construct'. $num;
+    /*Important que ens fixesim en el nº de parametres que passem
+    per a donarli de nom al contructor __construct + el nº de parametres*/
     if (method_exists($this,$f)) {
       call_user_func_array(array($this,$f),$args);
     }
   }
-  function __construct1($nom,$cognom,$pais)
+  function __construct3($nom,$cognom,$pais)
   {
-    $this->$nom=$nom;
-    $this->$cognom=$cognom;
-    $this->$pais=$pais;
+    $this->nom=$nom;
+    $this->cognom=$cognom;
+    $this->pais=$pais;
   }
   function __construct2()
   {
@@ -33,15 +35,21 @@ class autor
     echo "__construct con 3 params llamado: " . $a1 . "," . $a2 . "," . $a3;
   }
 */
-  function inserirAutor($nom,$cognom,$pais){
+  function inserirAutor(){
+    $server="localhost";
+    $username="root";
+    $password="1234";
+    $database="llibreria";
     $conexion = new mysqli();
-    @$conexion->connect($server, $username, $password, $database);
+    @$conexion=mysqli_connect($server, $username, $password, $database);
 
-    if ($conexion->connect_error){//Comprobo que podem establir conexió sino mostro error
-      die('Error de conexión: ' . $conexion->connect_error);
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
     }
 
-    $sql ="INSERT INTO autor (nom, cognom, nacio-pais) VALUES ($this->nom, $this->cognom, $this->pais)";//Genero sentencia SQL
+    $sql ="INSERT INTO autor (nom, cognom, pais)
+    VALUES ('$this->nom', '$this->cognom', '$this->pais')";//Genero sentencia SQL
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
 
