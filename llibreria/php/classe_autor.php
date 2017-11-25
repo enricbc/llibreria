@@ -26,7 +26,7 @@ class autor
     $this->cognom=$cognom;
     $this->pais=$pais;
   }
-  function __construct2()
+  function __construct0()
   {
 
   }
@@ -61,12 +61,18 @@ class autor
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   function getAutors(){
+    $server="localhost";
+    $username="root";
+    $password="1234";
+    $database="llibreria";
     $conexion = new mysqli();
-    @$conexion->connect($server, $username, $password, $database);
+    @$conexion=mysqli_connect($server, $username, $password, $database);
 
-    if ($conexion->connect_error){
-      die('Error de conexión: ' . $conexion->connect_error);
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
     }
+
     $sql="SELECT * from autor"; //Importem els usuaris
 
     $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
@@ -74,9 +80,11 @@ class autor
     if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
       while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
         echo "<pre>";
-
+          print_r($row);
+        echo "</pre>";
       }
     }
+    $conexion->close();
   }
   function esborrarAutors(){
 

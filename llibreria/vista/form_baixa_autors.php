@@ -5,6 +5,9 @@
     <title>Llibreria</title>
   </head>
   <body>
-    
+    <form name="submit" method="get" action="../php/baixa_autor.php">
+      <button type="submit" name="button">Carregar autors</button>
+
+    </form>
   </body>
 </html>

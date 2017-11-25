@@ -3,4 +3,5 @@
 
   $autor=new autor();
 
+  $autor->getAutors();
  ?>
