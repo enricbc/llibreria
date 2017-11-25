@@ -30,12 +30,18 @@ class autor
   }
 */
   function inserirGenere($nom){
+    $server="localhost";
+    $username="root";
+    $password="1234";
+    $database="llibreria";
     $conexion = new mysqli();
-    @$conexion->connect($server, $username, $password, $database);
+    @$conexion=mysqli_connect($server, $username, $password, $database);
 
-    if ($conexion->connect_error){//Comprobo que podem establir conexió sino mostro error
-      die('Error de conexión: ' . $conexion->connect_error);
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error i paro conexio
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
     }
+
 
     $sql ="INSERT INTO genere (nom) VALUES ($this->nom)";//Genero sentencia SQL
 

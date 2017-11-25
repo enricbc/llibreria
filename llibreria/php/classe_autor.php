@@ -53,7 +53,7 @@ class autor
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
 
-    if ($conexion->query($sql)===TRUE) {//Comprobem que s'ha introduit satisfactoriament
+    if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
       echo "S'ha inserit l'autor correctament";
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
