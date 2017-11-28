@@ -2,7 +2,7 @@
 /**
  *
  */
- include_once("conexio.php");
+ include_once('conexio.php');
 class autor
 {
   private $nom;
@@ -61,12 +61,9 @@ class autor
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   function getAutors(){
-    $server="localhost";
-    $username="root";
-    $password="1234";
-    $database="llibreria";
+    include_once('conexio.php');
     $conexion = new mysqli();
-    @$conexion=mysqli_connect($server, $username, $password, $database);
+    $conexion=mysqli_connect($server, $username, $password, $database);
 
     if (!$conexion){//Comprobo que podem establir conexió sino mostro error
       die('Connect Error (' . mysqli_connect_errno() . ') '
