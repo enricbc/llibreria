@@ -12,7 +12,7 @@ if (!$conn) {
 }
 
 // sql to delete a record
-$sql = "DELETE FROM genere WHERE id=('".$_POST['id']."')";
+$sql = "DELETE FROM genere WHERE id=".$_POST['id'];
 
 if (mysqli_query($conn, $sql)) {
     echo "Genere eliminat correctament";
