@@ -20,7 +20,7 @@ class autor
   {
     $this->$nom=$nom;
   }
-  function __construct2()
+  function __construct0()
   {
 
   }
