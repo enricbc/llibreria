@@ -1,8 +1,4 @@
 <?php
-/**
- *
- */
- include_once('conexio.php');
 class autor
 {
   private $nom;
@@ -36,11 +32,7 @@ class autor
   }
 */
   function inserirAutor(){
-    $server="localhost";
-    $username="root";
-    $password="1234";
-    $database="llibreria";
-    $conexion = new mysqli();
+    include_once ("conexio.php");
     @$conexion=mysqli_connect($server, $username, $password, $database);
 
     if (!$conexion){//Comprobo que podem establir conexió sino mostro error
@@ -61,7 +53,7 @@ class autor
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   function getAutors(){
-    include_once('conexio.php');
+    include_once ("conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
 
@@ -76,9 +68,11 @@ class autor
 
     if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
       while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
-
         echo "<pre>";
-          print_r($result);
+        echo "<input type='checkbox' name'autor'/>";
+          for ($i=0; $i < 3; $i++) {
+            echo $row[$i]." ";
+          }
         echo "</pre>";
       }
     }
