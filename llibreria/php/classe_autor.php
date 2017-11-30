@@ -4,6 +4,7 @@ class autor
   private $nom;
   private $cognom;
   private $pais;
+  private $id;
 
   function __construct()
   {
@@ -24,13 +25,15 @@ class autor
   }
   function __construct0()
   {
-
+    $this->id=$id;
   }
-  /*function __construct3($a1,$a2,$a3)
+  function __construct4($autor,$nom,$cognom,$pais)
   {
-    echo "__construct con 3 params llamado: " . $a1 . "," . $a2 . "," . $a3;
+    $this->id=$id;
+    $this->nom=$nom;
+    $this->cognom=$cognom;
+    $this->pais=$pais;
   }
-*/
   function inserirAutor(){
     include_once ("conexio.php");
     @$conexion=mysqli_connect($server, $username, $password, $database);
@@ -52,7 +55,7 @@ class autor
     }
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
-  function getAutors(){
+  static public function getAutors(){
     include_once ("conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
@@ -66,20 +69,38 @@ class autor
 
     $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
 
-    if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
-      while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
-        echo "<pre>";
-        echo "<input type='radio' name='autor' value=".$row[3]."/>";
-          for ($i=0; $i < 3; $i++) {
-            echo $row[$i]." ";
-          }
-        echo "</pre>";
-      }
-    }
-    $conexion->close();
+    return $result;
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   function esborrarAutors(){
 
+  }
+  function modificarAutors(){
+    echo "Eiiiiii";
+    include_once ("conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+    $sql ="UPDATE autor set nom =".$_GET['nom'].", cognom = ".$_GET['cognom'].", pais = ".$_GET['pais']. "where id = (".$this->id.");";
+    echo $sql;
+    //Genero sentencia SQL
+    /*VALUES ('$_GET['nom']', '$_GET['cognom']', '$_GET['pais']') */
+
+
+    $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
+
+    if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
+      echo "S'ha modificat l'autor correctament";
+    }else{
+      echo "Error: ".$sql." <br />".$conexion->error;
+    }
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
 }
 
