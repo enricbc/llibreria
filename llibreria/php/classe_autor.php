@@ -23,13 +23,13 @@ class autor
     $this->cognom=$cognom;
     $this->pais=$pais;
   }
-  function __construct0()
+  function __construct1($id)
   {
     $this->id=$id;
   }
   function __construct4($autor,$nom,$cognom,$pais)
   {
-    $this->id=$id;
+    $this->id=$autor;
     $this->nom=$nom;
     $this->cognom=$cognom;
     $this->pais=$pais;
@@ -73,11 +73,7 @@ class autor
 
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
-  function esborrarAutors(){
-
-  }
-  function modificarAutors(){
-    echo "Eiiiiii";
+  static public function getAutor($id){ //Recullo la informacio d'un autor gracies a un id
     include_once ("conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
@@ -86,8 +82,46 @@ class autor
       die('Connect Error (' . mysqli_connect_errno() . ') '
             . mysqli_connect_error());
     }
-    $sql ="UPDATE autor set nom =".$_GET['nom'].", cognom = ".$_GET['cognom'].", pais = ".$_GET['pais']. "where id = (".$this->id.");";
-    echo $sql;
+
+    $sql="SELECT * from autor where id = (".$id.");"; //Importem els usuaris
+
+    $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
+
+    return $result;
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
+  function esborrarAutors(){
+    include_once ("conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+    $sql ="DELETE FROM autor where id = (".$this->id.");";
+
+    $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
+
+    if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
+      echo "S'ha eliminat l'autor correctament";
+    }else{
+      echo "Error: ".$sql." <br />".$conexion->error;
+    }
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
+  function modificarAutors(){
+    include_once ("conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+    $sql ="UPDATE autor set nom ='$this->nom', cognom ='$this->cognom', pais ='$this->pais' where id = (".$this->id.");";
     //Genero sentencia SQL
     /*VALUES ('$_GET['nom']', '$_GET['cognom']', '$_GET['pais']') */
 

@@ -1,7 +1,6 @@
 <?php
   include_once("classe_autor.php");
-
-  $autor=new autor();
-
-  $autor->getAutors();
+  $id=$_GET['id'];
+  $autor=new autor($id);
+  $autor->esborrarAutors();
  ?>

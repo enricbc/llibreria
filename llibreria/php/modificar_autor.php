@@ -1,9 +1,10 @@
 <?php
 include_once("classe_autor.php");
-if (isset($autor)) {
-  $autor=new autor($_GET['id'],$_GET['nom'],$_GET['cognom'],$_GET['pais']);
-  $autor->modificarAutors();
-} ?>
+$result=autor::getAutor($_GET['id']);
+$row = $result->fetch_array();
+
+$autor=new autor($row[3],$row[0],$row[1],$row[2]);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -12,18 +13,18 @@ if (isset($autor)) {
     <title></title>
   </head>
   <body>
-    <form method="GET" action="modificar_autor.php">
+    <form method="GET" action="../php/modificar_autor1.php" >
       <p>
-        Nom: <input type="text" name="nom" autofocus required>
+        Nom: <input type="text" name="nom" value="<?php echo "$row[0]"?>" autofocus required>
         <br>
         <br>
-        Cognom: <input type="text" name="cognom" autofocus required>
+        Cognom: <input type="text" name="cognom" value="<?php echo "$row[1]"?>" autofocus required>
         <br>
         <br>
-        Nacio-Pais: <input type="text" name="pais" autofocus required>
+        Nacio-Pais: <input type="text" name="pais" value="<?php echo "$row[2]"?>" autofocus required>
         <br>
         <br>
-        <input type="hidden" name="id" value="<?php $_GET['autor'] ?>">
+        <input type="hidden" name="id" value="<?php echo "$row[3]"?>">
         <button type="submit" name="modificar">Modificar</button>
       </p>
     </form>

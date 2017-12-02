@@ -12,7 +12,7 @@
         if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
           while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
             echo "<pre>";
-            echo "<input type='radio' name='autor' value=".$row[3].">";
+            echo "<input type='radio' name='id' value=".$row[3].">";
               for ($i=0; $i < 3; $i++) {
                 echo $row[$i]." ";
               }
