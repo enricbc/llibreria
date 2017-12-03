@@ -77,7 +77,7 @@
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Autor</label>
           <div class="col-sm-10">
-            <select name="autor" class="custom-select" autofocus required>
+            <select name="autor" class="col-sm-4 form-control " autofocus required>
               <?php
                 include_once("../php/classe_autor.php");
                 $result=autor::getAutors();
