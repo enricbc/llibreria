@@ -68,7 +68,7 @@
   <body style="background-color: #F5EC9A;">
     <div class="form-group container py-5">
       <form name="formulari" method="get" action="../php/baixa_autor.php" >
-        <table class="table table-inverse">
+        <table class="table table-striped">
           <thead style="background-color: #6AF574;">
             <tr>
               <th></th>
