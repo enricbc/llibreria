@@ -59,35 +59,76 @@
       </ul>
     </div>
     </nav>
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </head>
   <body style="background-color: #F5EC9A;">
     <div class="form-group container py-5">
-      <form method="GET" action="../php/modificar_autor1.php" >
+      <form method="GET" action="../php/alta_llibre.php" >
         <div class="form-group row">
-          <label class="col-sm-2 col-formlabel" for="inputNom">Nom</label>
+          <label class="col-sm-2 col-formlabel" for="inputNom">Titol</label>
           <div class="col-sm-10">
-            <input type="text" name="nom" value=" " class="form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="titol" value=" " class="form-control col-sm-4" id="formGroupExampleInput" placeholder="Example input" autofocus required>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 col-formlabel" for="inputNom">Cognom</label>
+          <label class="col-sm-2 col-formlabel" for="inputNom">Autor</label>
           <div class="col-sm-10">
-            <input type="text" name="cognom" value=" " class="form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <select name="autor" class="custom-select" autofocus required>
+              <?php
+                include_once("../php/classe_autor.php");
+                $result=autor::getAutors();
+                if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
+                  while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
+                    echo "<option  value=".$row[3].">";
+                    echo $row[0]." ".$row[1];
+                    echo "</option>";
+                  }
+                }
+               ?>
+            </select>
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 col-formlabel" for="inputNom">Pais-Nacio</label>
+          <label class="col-sm-2 col-formlabel" for="inputNom">Numero Edició</label>
           <div class="col-sm-10">
-            <input type="text" name="pais" value=" "  class="form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="nedicio" value=" " class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
           </div>
         </div>
-          <button type="submit" class="btn btn-info">Modificar</button>
-        </p>
+        <div class="form-group row">
+          <label class="col-sm-2 col-formlabel" for="inputNom">Lloc de publicació</label>
+          <div class="col-sm-10">
+            <input type="text" name="llpubli" value=" "  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-formlabel" for="inputNom">Any de publicació</label>
+          <div class="col-sm-10">
+            <input type="date" name="any" >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-formlabel" for="inputNom">Editorial</label>
+          <div class="col-sm-10">
+            <input type="text" name="editorial" value=" "  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-formlabel" for="inputNom">ISBN</label>
+          <div class="col-sm-10">
+            <input type="text" name="isbn" value=" "  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-formlabel" for="inputNom">Quantitat exemplars</label>
+          <div class="col-sm-10">
+            <input type="text" name="qexemplars" value=" "  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-info">Inserir</button>
       </form>
     </div>
   </body>
