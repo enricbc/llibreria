@@ -12,6 +12,7 @@ class Llibre
   private $editorial;
   private $isbn;
   private $qexemplars;
+  private $id;
 
   function __construct()
   {
@@ -65,6 +66,45 @@ class Llibre
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
+  static public function getLlibres(){
+    include_once ("../php/conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+
+    $sql="SELECT * from llibre"; //Importem els usuaris
+
+    $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
+
+    return $result;
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
+  function esborrarLlibres(){
+    include_once ("conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+    $sql ="DELETE FROM llibre where id = (".$this->id.");";
+
+    $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
+
+    if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
+      echo "S'ha eliminat el llibre correctament";
+    }else{
+      echo "Error: ".$sql." <br />".$conexion->error;
+    }
+
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
 }
