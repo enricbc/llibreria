@@ -66,19 +66,19 @@ $autor=new autor($row[3],$row[0],$row[1],$row[2]);
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Nom</label>
           <div class="col-sm-10">
-            <input type="text" name="nom" value="<?php echo "$row[0]"?>" class="form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="nom" value="<?php echo "$row[0]"?>" class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Cognom</label>
           <div class="col-sm-10">
-            <input type="text" name="cognom" value="<?php echo "$row[1]"?>" class="form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="cognom" value="<?php echo "$row[1]"?>" class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Pais-Nacio</label>
           <div class="col-sm-10">
-            <input type="text" name="pais" value="<?php echo "$row[2]"?>" class="form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="pais" value="<?php echo "$row[2]"?>" class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
           </div>
         </div>
           <input type="hidden" name="id" value="<?php echo "$row[3]"?>">
