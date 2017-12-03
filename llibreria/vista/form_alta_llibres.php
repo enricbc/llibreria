@@ -107,7 +107,7 @@
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Any de publicació</label>
           <div class="col-sm-10">
-            <input type="date" name="any" >
+            <input type="date" name="any" class="col-sm-4 form-control" >
           </div>
         </div>
         <div class="form-group row">

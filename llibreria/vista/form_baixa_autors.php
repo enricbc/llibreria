@@ -44,6 +44,19 @@
           </div>
         </li>
       </ul>
+      <!--INICI LLIBRES-->
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Llibres
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="../vista/form_alta_llibres.php">Inserir</a>
+            <a class="dropdown-item" href="../vista/form_modificar_llibres.php">Modificar</a>
+            <a class="dropdown-item" href="../vista/form_baixa_llibres.php">Eliminar</a>
+          </div>
+        </li>
+      </ul>
     </div>
     </nav>
     <!-- Optional JavaScript -->
