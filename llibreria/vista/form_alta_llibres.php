@@ -57,6 +57,18 @@
           </div>
         </li>
       </ul>
+      <!--INICI STOCK-->
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Stock
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="../vista/form_alta_stock.php">Inserir</a>
+            <a class="dropdown-item" href="../vista/form_baixa_stock.php">Eliminar</a>
+          </div>
+        </li>
+      </ul>
     </div>
     </nav>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -66,6 +78,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </head>
   <body style="background-color: #F5EC9A;">
+    <div class="container mx-auto">
+      <div class="row py-5">
+        <h1>Donar d'alta llibre</h1>
+      </div>
     <div class="form-group container py-5">
       <form method="GET" action="../php/alta_llibre.php" >
         <div class="form-group row">
