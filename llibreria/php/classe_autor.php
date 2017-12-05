@@ -35,7 +35,8 @@ class autor
     $this->pais=$pais;
   }
   function inserirAutor(){
-    include_once ("conexio.php");
+    include ("../php/conexio.php");
+
     @$conexion=mysqli_connect($server, $username, $password, $database);
 
     if (!$conexion){//Comprobo que podem establir conexió sino mostro error
@@ -74,13 +75,8 @@ class autor
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   static public function getAutor($id){ //Recullo la informacio d'un autor gracies a un id
-    include_once ("../php/conexio.php");
+    include ("../php/conexio.php");
     $conexion = new mysqli();
-
-    $server="localhost"; //TONI AJUDA SIUSPLAU
-    $username="root";
-    $password="1234";
-    $database="llibreria";
 
     $conexion=mysqli_connect($server, $username, $password, $database);
 
