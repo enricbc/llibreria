@@ -57,7 +57,7 @@ class autor
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   static public function getAutors(){
-    include_once ("conexio.php");
+    include ("../php/conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
 

@@ -40,6 +40,17 @@ class Llibre
   {
     $this->id=$id;
   }
+  function __construct7($titol,$nedicio,$llpubli,$any,$editorial,$isbn,$qexemplars)
+  {
+
+    $this->titol=$titol;
+    $this->nedicio=$nedicio;
+    $this->llpubli=$llpubli;
+    $this->any=$any;
+    $this->editorial=$editorial;
+    $this->isbn=$isbn;
+    $this->qexemplars=$qexemplars;
+  }
   function __construct4($autor,$nom,$cognom,$pais)
   {
     $this->id=$autor;
@@ -86,7 +97,26 @@ class Llibre
 
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
-  function esborrarLlibres(){
+    static public function getLlibre($id){ //Recullo la informacio d'un autor gracies a un id
+    include ("../php/conexio.php");
+    $conexion = new mysqli();
+
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+
+    $sql="SELECT * from llibre where id = (".$id.");"; //Importem els usuaris
+
+    $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
+
+    return $result;
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+    }
+    function esborrarLlibres(){
     include_once ("conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
@@ -101,6 +131,32 @@ class Llibre
 
     if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
       echo "S'ha eliminat el llibre correctament";
+    }else{
+      echo "Error: ".$sql." <br />".$conexion->error;
+    }
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
+  function modificarLlibre(){
+    include_once ("conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+    $sql ="UPDATE llibre set titol ='$this->titol', isbn ='$this->isbn', lloc_publicacio ='$this->llpubli',
+    num_edicio ='$this->nedicio', any_edicio ='$this->any', id_autor ='$this->autor', editorial ='$this->editorial',
+    quantitat ='$this->qexemplars', where id = (".$this->id.");";
+    //Genero sentencia SQL
+    /*VALUES ('$_GET['nom']', '$_GET['cognom']', '$_GET['pais']') */
+
+
+    $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
+
+    if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
+      echo "S'ha modificat l'autor correctament";
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
