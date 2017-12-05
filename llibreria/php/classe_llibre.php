@@ -40,9 +40,10 @@ class Llibre
   {
     $this->id=$id;
   }
-  function __construct7($titol,$nedicio,$llpubli,$any,$editorial,$isbn,$qexemplars)
+  function __construct9($autor,$titol,$nedicio,$llpubli,$any,$editorial,$isbn,$qexemplars,$id)
   {
 
+    $this->autor=$autor;
     $this->titol=$titol;
     $this->nedicio=$nedicio;
     $this->llpubli=$llpubli;
@@ -50,6 +51,7 @@ class Llibre
     $this->editorial=$editorial;
     $this->isbn=$isbn;
     $this->qexemplars=$qexemplars;
+    $this->id=$id;
   }
   function __construct4($autor,$nom,$cognom,$pais)
   {
@@ -148,7 +150,7 @@ class Llibre
     }
     $sql ="UPDATE llibre set titol ='$this->titol', isbn ='$this->isbn', lloc_publicacio ='$this->llpubli',
     num_edicio ='$this->nedicio', any_edicio ='$this->any', id_autor ='$this->autor', editorial ='$this->editorial',
-    quantitat ='$this->qexemplars', where id = (".$this->id.");";
+    quantitat ='$this->qexemplars' where id = (".$this->id.");";
     //Genero sentencia SQL
     /*VALUES ('$_GET['nom']', '$_GET['cognom']', '$_GET['pais']') */
 
@@ -156,7 +158,7 @@ class Llibre
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
 
     if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
-      echo "S'ha modificat l'autor correctament";
+      echo "S'ha modificat el llibre correctament";
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }

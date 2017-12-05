@@ -1,5 +1,6 @@
 <?php
 include_once("classe_llibre.php");
+$id=$_GET['id'];
 $result1=Llibre::getLlibre($_GET['id']);
 $row = $result1->fetch_array(MYSQLI_ASSOC);
 
@@ -119,7 +120,7 @@ $llibre=new Llibre($row['id_autor'],$row['titol'],$row['num_edicio'],$row['lloc_
          <div class="form-group row">
            <label class="col-sm-2 col-formlabel" for="inputNom">Any de publicació</label>
            <div class="col-sm-10">
-             <input type="date" name="any"  value="<?php echo $row[any_edicio]?>" class="col-sm-4 form-control" >
+             <input type="date" name="any"  value="<?php echo $row['any_edicio']?>" class="col-sm-4 form-control" >
            </div>
          </div>
          <div class="form-group row">
@@ -140,6 +141,7 @@ $llibre=new Llibre($row['id_autor'],$row['titol'],$row['num_edicio'],$row['lloc_
              <input type="text" name="qexemplars"  value="<?php echo $row['quantitat']?>"  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
            </div>
          </div>
+         <input type="hidden" name="id" value="<?php echo $id?>">
          <button type="submit" class="btn btn-info">Modificar</button>
        </form>
      </div>
