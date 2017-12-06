@@ -90,7 +90,7 @@ $autor=new autor($row[3],$row[0],$row[1],$row[2]);
       <div class="row py-5">
         <h1>Modificar autor</h1>
       </div>
-    <div class="form-group container py-5">
+    <div class="form-group container ">
       <form method="GET" action="../php/modificar_autor1.php" >
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Nom</label>

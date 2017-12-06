@@ -82,7 +82,7 @@
       <div class="row py-5">
         <h1>Donar de baixa llibre</h1>
       </div>
-    <div class="form-group container py-5">
+    <div class="form-group container ">
       <form name="formulari" method="get" action="../php/baixa_llibre.php" >
         <table class="table table-striped">
           <thead style="background-color: #6AF574;">

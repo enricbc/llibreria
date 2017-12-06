@@ -90,7 +90,7 @@ $llibre=new Llibre($row['id_autor'],$row['titol'],$row['num_edicio'],$row['lloc_
        <div class="row py-5">
          <h1>Modificar llibre</h1>
        </div>
-     <div class="form-group container py-5">
+     <div class="form-group container ">
        <form method="GET" action="../php/modificar_llibre1.php" >
          <div class="form-group row">
            <label class="col-sm-2 col-formlabel" for="inputNom">Titol</label>

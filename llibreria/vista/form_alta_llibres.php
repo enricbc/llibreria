@@ -82,7 +82,7 @@
       <div class="row py-5">
         <h1>Donar d'alta llibre</h1>
       </div>
-    <div class="form-group container py-5">
+    <div class="form-group container ">
       <form method="GET" action="../php/alta_llibre.php" >
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Titol</label>
