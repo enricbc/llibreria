@@ -94,6 +94,7 @@
           <label class="col-sm-2 col-formlabel" for="inputNom">Autor</label>
           <div class="col-sm-10">
             <select name="autor" class="col-sm-4 form-control " autofocus required>
+              <option value=" " disabled selected></option>
               <?php
                 include_once("../php/classe_autor.php");
                 $result=autor::getAutors();
@@ -139,9 +140,22 @@
           </div>
         </div>
         <div class="form-group row">
-          <label class="col-sm-2 col-formlabel" for="inputNom">Quantitat exemplars</label>
+          <label class="col-sm-2 col-formlabel" for="inputNom">Genere</label>
           <div class="col-sm-10">
-            <input type="text" name="qexemplars" value=" "  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <select name="genere" class="col-sm-4 form-control " autofocus required>
+              <option value=" " disabled selected></option>
+              <?php
+                include("../php/classe_genere.php");
+                $result=Genere::getGeneres();
+                if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
+                  while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
+                    echo "<option  value=".$row[0].">";
+                    echo $row[1];
+                    echo "</option>";
+                  }
+                }
+               ?>
+            </select>
           </div>
         </div>
         <button type="submit" class="btn btn-info">Inserir</button>
