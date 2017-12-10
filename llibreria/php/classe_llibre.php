@@ -34,7 +34,7 @@ class Llibre
     $this->any=$any;
     $this->editorial=$editorial;
     $this->isbn=$isbn;
-    $this->genere=$genere;
+    $this->id=$genere;
   }
   function __construct1($id)
   {
@@ -69,12 +69,19 @@ class Llibre
             . mysqli_connect_error());
     }
 
-    $sql ="INSERT INTO llibre (id_autor, isbn, id_llibre_genere, any_edicio, editorial, lloc_publicacio, num_edicio, titol)
-    VALUES ('$this->autor', '$this->isbn', '$this->genere', '$this->any', '$this->editorial', '$this->llpubli', '$this->nedicio', '$this->titol');";//Genero sentencia SQL
+    $sql ="INSERT INTO llibre (id_autor, isbn, any_edicio, editorial, lloc_publicacio, num_edicio, titol)
+    VALUES ('$this->autor', '$this->isbn', '$this->any', '$this->editorial', '$this->llpubli', '$this->nedicio', '$this->titol');";//Genero sentencia SQL
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
     $this->id=$conexion->insert_id;
-    Llibre::inserirGenere($this->id,$this->genere);
+    if (is_array($this->genere)) {
+      $n=count($this->genere);
+      for ($i=0; $i <$n ; $i++) {
+        Llibre::inserirGenere($this->id,$this->genere[$i]);
+      }
+    }else {
+      Llibre::inserirGenere($this->id,$this->genere);
+    }
 
     if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
       echo "S'ha inserit el llibre correctament";
@@ -167,8 +174,8 @@ class Llibre
             . mysqli_connect_error());
     }
     $sql ="UPDATE llibre set titol ='$this->titol', isbn ='$this->isbn', lloc_publicacio ='$this->llpubli',
-    num_edicio ='$this->nedicio', any_edicio ='$this->any', id_autor ='$this->autor', editorial ='$this->editorial',
-    quantitat ='$this->qexemplars' where id = (".$this->id.");";
+    num_edicio ='$this->nedicio', any_edicio ='$this->any', id_autor ='$this->autor', editorial ='$this->editorial'
+    where id = (".$this->id.");";
     //Genero sentencia SQL
     /*VALUES ('$_GET['nom']', '$_GET['cognom']', '$_GET['pais']') */
 
@@ -182,6 +189,31 @@ class Llibre
     }
 
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
+  static public function getGenere($id){ //Recullo la informacio d'un autor gracies a un id
+  include ("../php/conexio.php");
+  $conexion = new mysqli();
+
+  $conexion=mysqli_connect($server, $username, $password, $database);
+
+  if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+    die('Connect Error (' . mysqli_connect_errno() . ') '
+          . mysqli_connect_error());
+  }
+
+  $sql1="SELECT id_genere from llibre_genere where id = (".$id.");"; //Importem els usuaris
+
+  $sql="SELECT nom from genere where id = (".$sql1.");";
+
+  $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
+  if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
+    return $result;
+  }else{
+    echo "Error: ".$sql." <br />".$conexion->error;
+  }
+
+
+  $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
 }
 

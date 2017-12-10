@@ -142,7 +142,7 @@
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Genere</label>
           <div class="col-sm-10">
-            <select name="genere" class="col-sm-4 form-control " autofocus required>
+            <select name="genere[]" class="col-sm-4 form-control " multiple autofocus required>
               <option value=" " disabled selected></option>
               <?php
                 include("../php/classe_genere.php");
@@ -162,5 +162,4 @@
       </form>
     </div>
   </body>
-
 </html>

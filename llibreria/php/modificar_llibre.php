@@ -4,7 +4,7 @@ $id=$_GET['id'];
 $result1=Llibre::getLlibre($_GET['id']);
 $row = $result1->fetch_array(MYSQLI_ASSOC);
 
-$llibre=new Llibre($row['id_autor'],$row['titol'],$row['num_edicio'],$row['lloc_publicacio'],$row['any_edicio'],$row['editorial'],$row['isbn'],$row['quantitat']);
+$llibre=new Llibre($row['id_autor'],$row['titol'],$row['num_edicio'],$row['lloc_publicacio'],$row['any_edicio'],$row['editorial'],$row['isbn']);
  ?>
  <!doctype html>
  <html lang="es">
@@ -152,12 +152,25 @@ $llibre=new Llibre($row['id_autor'],$row['titol'],$row['num_edicio'],$row['lloc_
            </div>
          </div>
          <div class="form-group row">
-           <label class="col-sm-2 col-formlabel" for="inputNom">Quantitat exemplars</label>
+           <label class="col-sm-2 col-formlabel" for="inputNom">Genere</label>
            <div class="col-sm-10">
-             <input type="text" name="qexemplars"  value="<?php echo $row['quantitat']?>"  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+             <select name="genere[]" class="col-sm-4 form-control " multiple autofocus required>
+               <option value=" " disabled selected></option>
+               <?php
+                 include("../php/classe_genere.php");
+                 $result=Genere::getGeneres();
+                 if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
+                   while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
+                     echo "<option  value=".$row[0].">";
+                     echo $row[1];
+                     echo "</option>";
+                   }
+                 }
+                ?>
+             </select>
            </div>
          </div>
-         <input type="hidden" name="id" value="<?php echo $id?>">
+         <input type="hidden" name="id" value="<?php echo $_GET['id']?>">
          <button type="submit" class="btn btn-info">Modificar</button>
        </form>
      </div>
