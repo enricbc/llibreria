@@ -48,6 +48,8 @@
                   }
               echo "</tr>";
             }
+          }else {
+            echo "<td colspan='6' class='text-white progress-bar-striped progress-bar-animated bg-danger'><center><strong>No hi han exemplars</strong></center></td>";
           }
          ?>
        </tbody>
