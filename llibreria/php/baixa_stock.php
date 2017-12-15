@@ -44,8 +44,7 @@
                     echo "<td><a href='../php/alta_prestec.php'>Prestar</a></td>";
                   }elseif ($stock["estat"]==1) {
                     echo "<td bgcolor='#FF0000'>Prestat</td>";
-                    echo "<td><a href='../php/modificar_prestec.php'>Modificar</a></td>";
-                    echo "<td><a href='../php/baixa_prestec.php'>Retornar</a></td>";
+                    echo "<td><a href='../php/modificar_prestec.php'>Modificar</a><br /><a href='../php/baixa_prestec.php'>Retornar</a></td>";
                   }
               echo "</tr>";
             }

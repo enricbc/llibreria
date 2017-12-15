@@ -87,6 +87,7 @@ class Llibre
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   static public function inserirGenere($id,$genere){
@@ -161,6 +162,7 @@ class Llibre
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   function modificarLlibre(){
@@ -195,6 +197,7 @@ class Llibre
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   static public function getGenere($id){ //Recullo la informacio d'un autor gracies a un id

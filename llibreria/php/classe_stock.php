@@ -38,6 +38,8 @@ class Stock
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
+
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   public static function getStock($id){
@@ -97,6 +99,7 @@ class Stock
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   public static function esborrarStocks($id){
@@ -108,7 +111,7 @@ class Stock
       die('Connect Error (' . mysqli_connect_errno() . ') '
             . mysqli_connect_error());
     }
-    echo $id;
+
     $sql ="DELETE FROM exemplar where id_llibre = $id;";
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
@@ -119,6 +122,7 @@ class Stock
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
 }
