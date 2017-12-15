@@ -43,7 +43,6 @@
          ?>
        </tbody>
      </table>
-     <input type="number" name="n_exemplars" value="">
      <button type="submit" class="btn btn-info">Selecció</button>
     </form>
     </div>

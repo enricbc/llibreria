@@ -107,7 +107,7 @@ class Llibre
     $conexion->close();
   }
   static public function getLlibres(){
-    include_once ("../php/conexio.php");
+    include("../php/conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
 

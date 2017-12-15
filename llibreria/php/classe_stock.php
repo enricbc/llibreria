@@ -59,7 +59,7 @@ class Stock
 
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
-  function esborrarStock(){
+  public static function getStocks($id){
     include ("../php/conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
@@ -68,36 +68,31 @@ class Stock
       die('Connect Error (' . mysqli_connect_errno() . ') '
             . mysqli_connect_error());
     }
-    $sql ="DELETE FROM exemplar where id_llibre = (".$this->id_llibre.");";
+
+    $sql="SELECT * from exemplar where id_llibre = (".$id.");"; //Importem els usuaris
+
+    $result = $conexion->query($sql); //Utilitzem la conexio per a donar un resultat
+
+    return $result;
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
+  public static function esborrarStock($id){
+    include ("../php/conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+    echo $id;
+    $sql ="DELETE FROM exemplar where id = $id;";
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
 
     if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
       echo "S'ha eliminat el Stock correctament";
-    }else{
-      echo "Error: ".$sql." <br />".$conexion->error;
-    }
-
-    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
-  }
-  function modificarAutors(){
-    include ("../php/conexio.php");
-    $conexion = new mysqli();
-    $conexion=mysqli_connect($server, $username, $password, $database);
-
-    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
-      die('Connect Error (' . mysqli_connect_errno() . ') '
-            . mysqli_connect_error());
-    }
-    $sql ="UPDATE autor set nom ='$this->nom', cognom ='$this->cognom', pais ='$this->pais' where id = (".$this->id.");";
-    //Genero sentencia SQL
-    /*VALUES ('$_GET['nom']', '$_GET['cognom']', '$_GET['pais']') */
-
-
-    $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
-
-    if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
-      echo "S'ha modificat l'autor correctament";
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
