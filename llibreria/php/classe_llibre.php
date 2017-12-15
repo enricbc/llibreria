@@ -144,7 +144,7 @@ class Llibre
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
     }
     function esborrarLlibres(){
-    include_once ("conexio.php");
+    include("conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
 

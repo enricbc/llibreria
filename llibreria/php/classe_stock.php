@@ -99,6 +99,28 @@ class Stock
 
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
+  public static function esborrarStocks($id){
+    include ("../php/conexio.php");
+    $conexion = new mysqli();
+    $conexion=mysqli_connect($server, $username, $password, $database);
+
+    if (!$conexion){//Comprobo que podem establir conexió sino mostro error
+      die('Connect Error (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+    }
+    echo $id;
+    $sql ="DELETE FROM exemplar where id_llibre = $id;";
+
+    $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
+
+    if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
+      echo "S'ha eliminat el Stock correctament";
+    }else{
+      echo "Error: ".$sql." <br />".$conexion->error;
+    }
+
+    $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
+  }
 }
 
 ?>
