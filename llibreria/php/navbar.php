@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <!--ESTRUCTURA NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="../vista/index.php">
         <img class="mx-1" src="../images/logo.png" width="30" height="30" alt="">Llibreria
       </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
