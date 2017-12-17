@@ -54,6 +54,8 @@ class autor
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
+
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   static public function getAutors(){
@@ -112,6 +114,7 @@ class autor
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   function modificarAutors(){
@@ -136,6 +139,7 @@ class autor
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
 }

@@ -11,19 +11,19 @@
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Nom</label>
           <div class="col-sm-10">
-            <input type="text" name="nom" value="Nom" class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="nom" value="" class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Nom" autofocus required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Cognom</label>
           <div class="col-sm-10">
-            <input type="text" name="cognom" value="Cognom" class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="cognom" value="" class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Cognom" autofocus required>
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-2 col-formlabel" for="inputNom">Pais-Nacio</label>
           <div class="col-sm-10">
-            <input type="text" name="pais" value="Pais"  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Example input" autofocus required>
+            <input type="text" name="pais" value=""  class="col-sm-4 form-control" id="formGroupExampleInput" placeholder="Pais" autofocus required>
           </div>
         </div>
           <button type="submit" class="btn btn-info">Inserir</button>

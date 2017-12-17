@@ -1,4 +1,16 @@
 <?php
+/**
+* @author Enric Beltran
+* @author enricbeltran@iesmontsia.org
+*/
+
+/**
+* Classe Stock
+*
+* En aquesta classe tenim els metodes necessaris per a crear, eliminar
+* i saber el stock que tenim de cada llibre.
+*
+*/
 class Stock
 {
   private $id_llibre;
@@ -18,6 +30,18 @@ class Stock
   {
     $this->id_llibre=$id;
   }
+  /**
+   * En aquest punt tindriem el Summary on recollim que fa la funció aquesta
+   *fucnió ens serveix per a insrir Stock.
+
+
+   * La "Description", pot esta formada per moltes linies, per a conseguir
+   * una descripcio molt mes detallada del element
+   *
+   * @return boolean $result aquest seria el resultat de la funció i el tipus
+   * de dada que retorna, i podriem afegir una explicació d'aquest argument
+   * que es el resultat de la conexio a la Base de Dades
+   */
   function inserirStock(){
     include ("../php/conexio.php");
 
@@ -38,6 +62,8 @@ class Stock
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
+
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   public static function getStock($id){
@@ -97,6 +123,7 @@ class Stock
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   public static function esborrarStocks($id){
@@ -108,7 +135,7 @@ class Stock
       die('Connect Error (' . mysqli_connect_errno() . ') '
             . mysqli_connect_error());
     }
-    echo $id;
+
     $sql ="DELETE FROM exemplar where id_llibre = $id;";
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
@@ -119,6 +146,7 @@ class Stock
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
 }

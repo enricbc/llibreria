@@ -28,7 +28,7 @@
 
           if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
             while ($stock = $result->fetch_array(MYSQLI_ASSOC)){//Mentre que poguesim agafar elements del array
-              $result2=Llibre::getLlibres();
+              $result2=Llibre::getLlibre($_GET['id']);
               $row = $result2->fetch_array(MYSQLI_ASSOC);
               $result1=autor::getAutor($row["id_autor"]);
               $autor = $result1->fetch_array();
@@ -44,11 +44,12 @@
                     echo "<td><a href='../php/alta_prestec.php'>Prestar</a></td>";
                   }elseif ($stock["estat"]==1) {
                     echo "<td bgcolor='#FF0000'>Prestat</td>";
-                    echo "<td><a href='../php/modificar_prestec.php'>Modificar</a></td>";
-                    echo "<td><a href='../php/baixa_prestec.php'>Retornar</a></td>";
+                    echo "<td><a href='../php/modificar_prestec.php'>Modificar</a><br /><a href='../php/baixa_prestec.php'>Retornar</a></td>";
                   }
               echo "</tr>";
             }
+          }else {
+            echo "<td colspan='6' class='text-white progress-bar-striped progress-bar-animated bg-danger'><center><strong>No hi han exemplars</strong></center></td>";
           }
          ?>
        </tbody>

@@ -34,7 +34,7 @@ class Llibre
     $this->any=$any;
     $this->editorial=$editorial;
     $this->isbn=$isbn;
-    $this->id=$genere;
+    $this->genere=$genere;
   }
   function __construct1($id)
   {
@@ -75,9 +75,8 @@ class Llibre
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
     $this->id=$conexion->insert_id;
     if (is_array($this->genere)) {
-      $n=count($this->genere);
-      for ($i=0; $i <$n ; $i++) {
-        Llibre::inserirGenere($this->id,$this->genere[$i]);
+      foreach ($this->genere as &$value) {
+      Llibre::inserirGenere($this->id,$value);
       }
     }else {
       Llibre::inserirGenere($this->id,$this->genere);
@@ -88,6 +87,7 @@ class Llibre
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   static public function inserirGenere($id,$genere){
@@ -162,6 +162,7 @@ class Llibre
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   function modificarLlibre(){
@@ -182,12 +183,21 @@ class Llibre
 
     $result = $conexion->query($sql);//Retotno resultat de la conexio si ha funcionat o no
 
+    if (is_array($this->genere)) {
+      foreach ($this->genere as &$value) {
+      Llibre::inserirGenere($this->id,$value);
+      }
+    }else {
+      Llibre::inserirGenere($this->id,$this->genere);
+    }
+
     if ($result===TRUE) {//Comprobem que s'ha introduit satisfactoriament
       echo "S'ha modificat el llibre correctament";
     }else{
       echo "Error: ".$sql." <br />".$conexion->error;
     }
 
+    return $result;
     $conexion->close();// Tanquem conexio IMPORTANTISSIM!!!
   }
   static public function getGenere($id){ //Recullo la informacio d'un autor gracies a un id
