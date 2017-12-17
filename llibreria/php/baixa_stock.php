@@ -28,7 +28,7 @@
 
           if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
             while ($stock = $result->fetch_array(MYSQLI_ASSOC)){//Mentre que poguesim agafar elements del array
-              $result2=Llibre::getLlibres();
+              $result2=Llibre::getLlibre($_GET['id']);
               $row = $result2->fetch_array(MYSQLI_ASSOC);
               $result1=autor::getAutor($row["id_autor"]);
               $autor = $result1->fetch_array();

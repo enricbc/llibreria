@@ -1,4 +1,16 @@
 <?php
+/**
+* @author Enric Beltran
+* @author enricbeltran@iesmontsia.org
+*/
+
+/**
+* Classe Stock
+*
+* En aquesta classe tenim els metodes necessaris per a crear, eliminar
+* i saber el stock que tenim de cada llibre.
+*
+*/
 class Stock
 {
   private $id_llibre;
@@ -18,6 +30,18 @@ class Stock
   {
     $this->id_llibre=$id;
   }
+  /**
+   * En aquest punt tindriem el Summary on recollim que fa la funció aquesta
+   *fucnió ens serveix per a insrir Stock.
+
+
+   * La "Description", pot esta formada per moltes linies, per a conseguir
+   * una descripcio molt mes detallada del element
+   *
+   * @return boolean $result aquest seria el resultat de la funció i el tipus
+   * de dada que retorna, i podriem afegir una explicació d'aquest argument
+   * que es el resultat de la conexio a la Base de Dades
+   */
   function inserirStock(){
     include ("../php/conexio.php");
 
