@@ -15,27 +15,28 @@
               <th>Titol</th>
               <th>Autor</th>
               <th>ISBN</th>
-              <th>Editorial</th>
+              <th>Exemplars</th>
             </tr>
           </thead>
           <tbody style="background-color: #E2F5DD;">
         <?php
-          include("../php/classe_llibre.php");
-          include("../php/classe_autor.php");
+          include_once("../php/classe_llibre.php");
+          include_once("../php/classe_autor.php");
+          include_once("../php/classe_stock.php");
           $result=Llibre::getLlibres();
 
           if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
             while ($row = $result->fetch_array(MYSQLI_ASSOC)){//Mentre que poguesim agafar elements del array
               $result1=autor::getAutor($row["id_autor"]);
               $autor = $result1->fetch_array();
-              //$genere = $result2->fetch_array(MYSQLI_ASSOC);
+              $result2=Stock::getStock($row["id"]);
               echo "<tr>";
               echo "<th><input type='radio' name='id' value=".$row["id"]."></th>";
                 //for ($i=0; $i < 4; $i++) {
                   echo "<td>".$row["titol"]."</td>";
                   echo "<td>".$autor[0]." ".$autor[1]."</td>";
                   echo "<td>".$row["isbn"]."</td>";
-                  echo "<td>".$row["editorial"]."</td>";
+                  echo "<td>".$result2."</td>";
                 //}
               echo "</tr>";
             }
