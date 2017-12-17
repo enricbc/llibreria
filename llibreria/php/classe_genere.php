@@ -1,5 +1,5 @@
 <?php
-class Genere
+class autor
 {
   private $nom;
   private $id;
