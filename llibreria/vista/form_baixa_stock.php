@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="es">
-<?php include("../php/navbar.php") ?>
+  <?php include("../php/navbar.php") ?>
   <body style="background-color: #F5EC9A;">
     <div class="container mx-auto">
       <div class="row py-5">
-        <h1>Modificar llibre</h1>
+        <h1>Baixa stock</h1>
       </div>
     <div class="form-group container ">
-      <form name="formulari" method="get" action="../php/modificar_llibre.php" >
+      <form name="formulari" method="get" action="../php/baixa_stock.php" >
         <table class="table table-striped">
           <thead style="background-color: #6AF574;">
             <tr>
