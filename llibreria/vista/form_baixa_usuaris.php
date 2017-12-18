@@ -7,6 +7,7 @@
         <table class="table table-striped">
           <thead style="background-color: #6AF574;">
             <tr>
+              <th>#</th>
               <th>id</th> <!--lloc on va el camp ID-->
               <th>Nom</th>
               <th>DNI</th>
@@ -28,7 +29,7 @@
             while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
               echo "<tr>";
               echo "<th><input type='radio' name='id' value=".$row[0]."></th>"; //nose kin numero de id va aqui exactament.
-                for ($i=0; $i < 10; $i++) {
+                for ($i=0; $i < 11; $i++) {
                   echo "<td>".$row[$i]."</td>";
                 }
               echo "</tr>";
