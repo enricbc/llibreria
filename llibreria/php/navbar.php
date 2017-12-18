@@ -14,6 +14,21 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!--USUARIS-->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuaris
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="../vista/form_alta_usuaris.php">Inserir</a>
+            <a class="dropdown-item" href="../vista/form_modificar_usuaris.php">Modificar</a>
+            <a class="dropdown-item" href="../vista/form_baixa_usuaris.php">Eliminar</a>
+          </div>
+        </li>
+      </ul>
+      <!--Fi USUARIS-->
     <!--AUTORS-->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
