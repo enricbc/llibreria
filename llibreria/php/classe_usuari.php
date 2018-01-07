@@ -213,7 +213,7 @@ class usuari{
 
     //INSERIR USUARI
       function inserirUsuari(){
-    include_once ("conexio.php");
+    include ("conexio.php");
     //include_once ("../M7_2/conexio.php");
     @$conexion=mysqli_connect($server, $username, $password, $database);
 
@@ -238,7 +238,7 @@ class usuari{
 
     //agafem les dades dels usuaris
      static public function getUsuari(){
-    include_once ("conexio.php");
+    include ("../php/conexio.php");
     //include_once ("../M7_2/conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
@@ -261,7 +261,7 @@ class usuari{
      //s'utilitza per fer un select
 	static public function getUsuaris($id){ //Recullo la informacio d'un usuari gracies a un id
     //include_once ("../M7_2/conexio.php");
-    include_once ("conexio.php");
+    include ("conexio.php");
     $conexion = new mysqli();
 
     $server="localhost";
@@ -288,7 +288,7 @@ class usuari{
 
     //Fem un delete
       function esborrarUsuari(){
-    include_once ("conexio.php");
+    include("conexio.php");
     //include_once ("../M7_2/conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
@@ -318,7 +318,7 @@ class usuari{
      //PRIORITAT
     //Actualitzem les dades dels usuaris
     function modificarUsuari(){
-    include_once ("conexio.php");
+    include("conexio.php");
     //include_once ("../M7_2/conexio.php");
     $conexion = new mysqli();
     $conexion=mysqli_connect($server, $username, $password, $database);
