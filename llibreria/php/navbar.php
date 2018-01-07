@@ -81,6 +81,19 @@
           </div>
         </li>
       </ul>
+      <!--INICI PRESTEC-->
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Prestec
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="../vista/form_alta_prestec.php">Inserir</a>
+			<a class="dropdown-item" href="../vista/form_modificar_prestec.php">Modificar</a>
+            <a class="dropdown-item" href="../vista/form_baixa_prestec.php">Eliminar</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
   <!-- Optional JavaScript -->

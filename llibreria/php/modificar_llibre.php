@@ -82,7 +82,7 @@ $llibre=new Llibre($row['id_autor'],$row['titol'],$row['num_edicio'],$row['lloc_
                <option value=" " disabled selected></option>
                <?php
                  include("../php/classe_genere.php");
-                 $result=Genere::getGeneres();
+                 $result=Genere::getGenere();
                  if ($result->num_rows > 0){ //Si la consulta ens retorna alguna linia (Si en retorna ho posa en un array)
                    while ($row = $result->fetch_array()){//Mentre que poguesim agafar elements del array
                      echo "<option  value=".$row[0].">";
