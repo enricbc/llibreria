@@ -41,10 +41,10 @@
                   echo "<td>".$autor[0]." ".$autor[1]."</td>";
                   if ($stock["estat"]==0) {
                     echo "<td bgcolor='#00FF00'>Disponible</td>";
-                    echo "<td><a href='../vista/form_alta_prestec.php'>Prestar</a></td>";
+                    echo "<td><a href='../vista/form_alta_prestec.php?id=".$stock["id"]."'>Prestar</a></td>";
                   }elseif ($stock["estat"]==1) {
                     echo "<td bgcolor='#FF0000'>Prestat</td>";
-                    echo "<td><a href='../php/modificar_prestec.php'>Modificar</a><br /><a href='../vista/form_baixa_prestec.php'>Retornar</a></td>";
+                    echo "<td><a href='../php/modificar_prestec.php?id=".$stock["id"]."'>Modificar</a><br /><a href='../vista/form_baixa_prestec.php?id=".$stock["id"]."'>Retornar</a></td>";
                   }
               echo "</tr>";
             }
