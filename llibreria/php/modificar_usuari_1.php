@@ -1,5 +1,5 @@
 <?php
-include_once("clase_usuari.php");
+include("classe_usuari.php");
 //$id=$_GET['id'];
 $result=usuari::getUsuari($_GET['id']);
 //$row = $result->fetch_array(MYSQLI_ASSOC);
